@@ -44,11 +44,14 @@ class security_update_check:
 
         except subprocess.TimeoutExpired as e:
             p.kill()
+            p.communicate()
             #print(command)
             # traceback.print_exc()
             return ""
         except Exception as e:
             # traceback.print_exc()
+            if p is not None:
+                p.communicate()
             self.maindata['msg']=str(e)
             self.maindata['status']=0
             return ""
@@ -149,7 +152,7 @@ class security_update_check:
             self.package_table(log_details_raw)
 
             if os.path.exists("{}/config.json".format(self.plugin_script_path)):
-                with open("{}/config.json".format(self.plugin_script_path), "r") as f:
+                with open("{}/config.json".format(self.plugin_script_path), "r", encoding='utf-8', errors='replace') as f:
                     config=json.load(f)
                     prev_hash=config['hash']
                     file_version=config['file_version']
@@ -158,18 +161,18 @@ class security_update_check:
                     os.remove("{}/updates_list_{}.txt".format(self.plugin_script_path,file_version))
                     file_version=file_time
                     config={"file_version":file_version, "hash":output_hash}
-                    with open("{}/config.json".format(self.plugin_script_path),"w") as f:
+                    with open("{}/config.json".format(self.plugin_script_path),"w", encoding='utf-8', errors='replace') as f:
                         json.dump(config, f)
-                    with open("{}/updates_list_{}.txt".format(self.plugin_script_path,file_version), 'a') as f:
+                    with open("{}/updates_list_{}.txt".format(self.plugin_script_path,file_version), 'a', encoding='utf-8', errors='replace') as f:
                         for i in range(0, len(log_details_raw), 4):
                             log_details=" ".join(log_details_raw[i:i+4])
                             f.write(log_details)
                             f.write("\n")
             else:
-                with open("{}/config.json".format(self.plugin_script_path),"x") as f:
+                with open("{}/config.json".format(self.plugin_script_path),"x", encoding='utf-8', errors='replace') as f:
                     config={"file_version":file_time, "hash":output_hash}
                     json.dump(config, f)
-                with open("{}/updates_list_{}.txt".format(self.plugin_script_path, file_time), 'a') as f:
+                with open("{}/updates_list_{}.txt".format(self.plugin_script_path, file_time), 'a', encoding='utf-8', errors='replace') as f:
                     for i in range(0, len(log_details_raw), 4):
                             log_details=" ".join(log_details_raw[i:i+4])
                             f.write(log_details)
@@ -189,7 +192,7 @@ class security_update_check:
                 self.maindata['status']=0
                 return self.maindata
             
-            with open(distro_file, 'r') as f:
+            with open(distro_file, 'r', encoding='utf-8', errors='replace') as f:
                 os_content=f.read()
 
             fileContent = os_content.splitlines()
@@ -222,7 +225,7 @@ class security_update_check:
                     self.maindata['Reboot Required for packages']="True"
                     if os.path.isfile(reboot_required_packages_list):
                         try:
-                            with open(reboot_required_packages_list, "r") as f:
+                            with open(reboot_required_packages_list, "r", encoding='utf-8', errors='replace') as f:
                                 reboot_required_packages = [pkg for pkg in f.read().split("\n") if pkg]
                             self.maindata['Reboot Required Packages Count']=len(reboot_required_packages)
                         except Exception as e:
@@ -258,7 +261,7 @@ class security_update_check:
                 file_path='/var/lib/update-notifier/updates-available'
                 if os.path.isfile(file_path):
                     try:
-                        with open(file_path, 'r') as f:
+                        with open(file_path, 'r', encoding='utf-8', errors='replace') as f:
                             lines = [line.strip('\n') for line in f]
                         self.maindata['Security Updates'] = 0
                         for line in lines:
