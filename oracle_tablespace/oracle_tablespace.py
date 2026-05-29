@@ -632,7 +632,7 @@ def main():
         "--get", default=defaults["get"], help="Page number to retrieve (1-based)"
     )
     parser.add_argument(
-        "--plugin_version", default=defaults["plugin_version"], help="Page number to retrieve (1-based)"
+        "--plugin_version", default=defaults["plugin_version"], help="Plugin version"
     )
 
     args = parser.parse_args()
