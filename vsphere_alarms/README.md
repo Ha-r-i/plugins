@@ -20,7 +20,7 @@
 > The plugin only works if the VMware PowerCLI module is installed for all users or for the user account under which the Site24x7 agent service runs.
 - Execute the below command in PowerShell to check for valid output:
 
-		powershell .\vsphere_alarms.ps1 -v -Server 10.10.10.10 -username admin@vsphere.local -password Site24x7
+		powershell .\vsphere_alarms.ps1 -v -Server 10.10.10.10 -username test@example.local -password example
 
 - Move the folder `vsphere_alarms` under the Site24x7 Windows Agent plugin folder:
 

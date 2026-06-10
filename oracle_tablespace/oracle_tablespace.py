@@ -283,7 +283,7 @@ class OracleMonitor:
 
         return result
 
-    def execute_tablespace_metrics(self) -> List[Dict]:
+    def execute_tablespace_metrics(self) -> Tuple[List[Dict], List[Dict]]:
         """Execute tablespace query with caching"""
         tablespaces = None
         datafiles = None
@@ -594,8 +594,8 @@ def main():
         "hostname": "localhost",
         "port": "1521",
         "sid": "xe",
-        "username": "site3",
-        "password": "plugin123",
+        "username": "USERNAME",
+        "password": "PASSWORD",
         "tls": "False",
         "wallet_location": None,
         "oracle_home": "/opt/oracle/product/19c/dbhome_1/",
