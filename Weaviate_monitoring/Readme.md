@@ -1,3 +1,4 @@
+# Weaviate Monitoring
 Weaviate is an open-source vector database that stores and searches embeddings for AI applications, such as semantic search and Retrieval-Augmented Generation (RAG). It exposes both a REST/GraphQL API and Prometheus-style metrics that this plugin uses to report on cluster health, storage, and vector index performance.
 
 ## Prerequisites
