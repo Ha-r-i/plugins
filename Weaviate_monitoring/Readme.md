@@ -18,11 +18,7 @@ If your Weaviate instance has `AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: "true"` 
 
 If your Weaviate instance has API key authentication enabled, generate or obtain an API key with read access and provide it as `api_key`. The plugin sends it as a `Bearer` token in the `Authorization` header.
 
-**Basic Authentication (behind a reverse proxy)**
-
-If Weaviate sits behind a reverse proxy enforcing HTTP Basic Auth, provide `username` and `password`. The plugin will send these as standard HTTP Basic credentials on every request.
-
-In all cases, the monitoring credentials only need **read-only** access — the plugin never writes, updates, or deletes any data in Weaviate.
+In both cases, the monitoring credentials only require **read-only** access. The plugin only retrieves metrics and metadata from Weaviate and never creates, modifies, or deletes any data.
 
 ## Plugin Installation
 
@@ -40,7 +36,7 @@ In all cases, the monitoring credentials only need **read-only** access — the 
 
 - Execute the below command with appropriate arguments to check for the valid json output:
 
-		python3 Weaviate_Monitoring.py --host 'localhost' --port '8080' --metrics_port '2112' --api_key '' --ssl 'false' --ssl_verify 'true' --username '' --password ''
+		python3 Weaviate_Monitoring.py --host 'localhost' --port '8080' --metrics_port '2112' --api_key '' --ssl 'false' --ssl_verify 'true'
 
 - Provide your Weaviate configurations in the `Weaviate_Monitoring.cfg` file:
 
@@ -54,8 +50,6 @@ In all cases, the monitoring credentials only need **read-only** access — the 
 		api_key = ""
 		ssl = "false"
 		ssl_verify = "true"
-		username = ""
-		password = ""
 
 - Move the directory `weaviate` under the Site24x7 Linux Agent plugin directory:
 
@@ -75,7 +69,7 @@ In all cases, the monitoring credentials only need **read-only** access — the 
 
 - Execute the below command with appropriate arguments in cmd to check for the valid json output:
 
-		python Weaviate_Monitoring.py --host 'localhost' --port '8080' --metrics_port '2112' --api_key '' --ssl 'false' --ssl_verify 'true' --username '' --password ''
+		python Weaviate_Monitoring.py --host 'localhost' --port '8080' --metrics_port '2112' --api_key '' --ssl 'false' --ssl_verify 'true'
 
 - Provide your Weaviate configurations in the `Weaviate_Monitoring.cfg` file:
 
@@ -86,8 +80,6 @@ In all cases, the monitoring credentials only need **read-only** access — the 
 		api_key = ""
 		ssl = "false"
 		ssl_verify = "true"
-		username = ""
-		password = ""
 
 - Move the folder `weaviate` under the Site24x7 Windows Agent plugin directory:
 
@@ -138,6 +130,8 @@ The agent will automatically execute the plugin within five minutes and user can
 
 ### Collection,Object and NOde count
 
+| Name | Description | Impact on Weaviate |
+|------|-------------|--------------------|
 | Collection Count | Number of collections (classes) defined in the Weaviate schema | Indicates the number of datasets managed by Weaviate. |
 | Object Count | Total number of objects stored across all nodes | Reflects database size and storage growth over time. |
 | Node Count | Number of nodes in the Weaviate cluster | Helps monitor cluster availability and scalability. |
@@ -168,5 +162,3 @@ The agent will automatically execute the plugin within five minutes and user can
 
 ## Sample Images
 
-<!-- Add screenshots of the plugin's Site24x7 dashboard here, e.g.: -->
-<!-- <img width="1640" height="906" alt="image" src="LINK_TO_YOUR_SCREENSHOT" /> -->    
