@@ -161,4 +161,7 @@ The agent will automatically execute the plugin within five minutes and user can
 | Object Count | Number of objects stored in the shard | Helps monitor shard utilization and detect uneven data distribution. |
 
 ## Sample Images
+<img width="1072" height="533" alt="image" src="https://github.com/user-attachments/assets/e4926ea8-8141-4d7c-ad43-5883c3fca015" />
+<img width="1075" height="488" alt="image" src="https://github.com/user-attachments/assets/8b1a2287-e788-426a-a3ab-e2b92e49a299" />
+
 
