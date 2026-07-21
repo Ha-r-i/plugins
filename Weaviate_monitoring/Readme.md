@@ -1,4 +1,4 @@
-# Weaviate Monitoring
+<img width="1066" height="445" alt="image" src="https://github.com/user-attachments/assets/73e6e92c-3b78-4503-bb58-05dbf15be393" /># Weaviate Monitoring
 Weaviate is an open-source vector database that stores and searches embeddings for AI applications, such as semantic search and Retrieval-Augmented Generation (RAG). It exposes both a REST/GraphQL API and Prometheus-style metrics that this plugin uses to report on cluster health, storage, and vector index performance.
 
 ## Prerequisites
@@ -161,7 +161,8 @@ The agent will automatically execute the plugin within five minutes and user can
 | Object Count | Number of objects stored in the shard | Helps monitor shard utilization and detect uneven data distribution. |
 
 ## Sample Images
-<img width="1072" height="533" alt="image" src="https://github.com/user-attachments/assets/e4926ea8-8141-4d7c-ad43-5883c3fca015" />
-<img width="1075" height="488" alt="image" src="https://github.com/user-attachments/assets/8b1a2287-e788-426a-a3ab-e2b92e49a299" />
+<img width="1060" height="494" alt="image" src="https://github.com/user-attachments/assets/49915a3f-1e94-4d0b-8d45-dc16a745a0e4" />
+<img width="1066" height="445" alt="image" src="https://github.com/user-attachments/assets/66e07cbf-e9dc-4db8-b815-cf547090f645" />
+
 
 
